@@ -1,3 +1,13 @@
+## 2026-07-15 - Release 4.0.0
+
+### Breaking changes
+
+- Drop Puppet, update OpenVox minimum version to 8.19
+
+### Enhancements
+
+- Add support for Stdlib 10.x
+
 ## 2025-07-14 - Release 3.1.0
 
 ### Enhancements
