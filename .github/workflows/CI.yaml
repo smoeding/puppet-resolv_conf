@@ -12,6 +12,10 @@ on:
       - main
       - master
 
+variables:
+  # Use internal default Rakefile, to make sure we have a working version
+  RAKE: bundle exec rake -f /opt/voxbox/Rakefile
+
 jobs:
   checks:
     name: OpenVox ${{ matrix.openvox_version }}
@@ -24,6 +28,7 @@ jobs:
 
     container:
       image: ghcr.io/voxpupuli/voxbox:${{ matrix.openvox_version }}
+      entrypoint: [""]
       volumes:
         - ${{ github.workspace }}:/repo
         - /etc/gitconfig:/etc/gitconfig
@@ -33,23 +38,30 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Syntax
-        run: rake syntax
+        script:
+          - $RAKE syntax
 
       - name: Check
-        run: rake check
+        script:
+          - $RAKE check
 
       - name: Lint code
-        run: rake lint
+        script:
+          - $RAKE lint
 
       - name: Lint YAML
         if: ${{ hashFiles('data') != '' }}
-        run: yamllint data/
+        script:
+          - yamllint data/
 
       - name: Lint Metadata
-        run: rake metadata_lint
+        script:
+          - $RAKE metadata_lint
 
       - name: Rubocop
-        run: rake rubocop
+        script:
+          - $RAKE rubocop
 
       - name: Unit Tests
-        run: rake spec
+        script:
+          - $RAKE spec
