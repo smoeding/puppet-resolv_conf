@@ -36,20 +36,20 @@ jobs:
         run: bundle exec rake -f /opt/voxbox/Rakefile syntax
 
       - name: Check
-        run: rake check
+        run: bundle exec rake -f /opt/voxbox/Rakefile check
 
       - name: Lint code
-        run: rake lint
+        run: bundle exec rake -f /opt/voxbox/Rakefile lint
 
       - name: Lint YAML
         if: ${{ hashFiles('data') != '' }}
         run: yamllint data/
 
       - name: Lint Metadata
-        run: rake metadata_lint
+        run: bundle exec rake -f /opt/voxbox/Rakefile metadata_lint
 
       - name: Rubocop
-        run: rake rubocop
+        run: bundle exec rake -f /opt/voxbox/Rakefile rubocop
 
       - name: Unit Tests
-        run: rake spec
+        run: bundle exec rake -f /opt/voxbox/Rakefile spec
