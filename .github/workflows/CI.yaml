@@ -43,8 +43,7 @@ jobs:
 
       - name: Lint YAML
         if: ${{ hashFiles('data') != '' }}
-        script:
-          - yamllint data/
+        run: yamllint data/
 
       - name: Lint Metadata
         run: rake metadata_lint
