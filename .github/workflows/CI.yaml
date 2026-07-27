@@ -11,8 +11,6 @@ on:
     branches:
       - main
       - master
-  schedule:
-    - cron: '33 2 * * 0'
 
 jobs:
   checks:
@@ -32,26 +30,26 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Syntax
-        run: rake -f /Rakefile syntax
+        run: rake syntax
 
       - name: Check
-        run: rake -f /Rakefile check
+        run: rake check
 
       - name: Lint code
-        run: rake -f /Rakefile lint
+        run: rake lint
 
       - name: Lint YAML
         if: ${{ hashFiles('data') != '' }}
         run: yamllint data/
 
       - name: Lint Metadata
-        run: rake -f /Rakefile metadata_lint
+        run: rake metadata_lint
 
       - name: Rubocop
-        run: rake -f /Rakefile rubocop
+        run: rake rubocop
 
       - name: Unit Tests
-        run: rake -f /Rakefile spec
+        run: rake spec
