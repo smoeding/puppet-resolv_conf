@@ -75,6 +75,8 @@ An array of name servers that the resolver should query for hostname
 lookups. A maximum number of three name servers can be specified. The
 default value is a single element array containing `127.0.0.1`.
 
+Default value: `['127.0.0.1']`
+
 ##### <a name="-resolv_conf--domainname"></a>`domainname`
 
 Data type: `Optional[String]`
@@ -137,6 +139,8 @@ Data type: `Stdlib::Absolutepath`
 The absolute path of the file to manage. The default is
 `/etc/resolv.conf`. In general it does not make sense to change this
 parameter.
+
+Default value: `'/etc/resolv.conf'`
 
 ##### <a name="-resolv_conf--owner"></a>`owner`
 
