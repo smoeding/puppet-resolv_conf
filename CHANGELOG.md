@@ -1,3 +1,7 @@
+## 2026-07-28 - Release 4.0.1
+
+No functional changes since 4.0.0
+
 ## 2026-07-15 - Release 4.0.0
 
 ### Breaking changes
